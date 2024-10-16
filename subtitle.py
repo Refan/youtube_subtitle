@@ -17,11 +17,18 @@ def display_transcript(video_id):
         return
     
     try:
+        # 嘗試獲取繁體中文字幕
         srt = YouTubeTranscriptApi.get_transcript(key, languages=['zh-Hant'])
     except Exception as e:
-        print("獲取字幕失敗：", e)
-        print("請確認影片是否有字幕或語言設定是否正確。")
-        return
+        # print("獲取繁體中文字幕失敗：", e)
+        # print("嘗試獲取台灣中文字幕。")
+        try:
+            # 如果繁體中文字幕不存在，則嘗試獲取台灣中文字幕
+            srt = YouTubeTranscriptApi.get_transcript(key, languages=['zh-TW'])
+        except Exception as e:
+            # print("獲取台灣中文字幕失敗：", e)
+            # print("請確認影片是否有字幕或語言設定是否正確。")
+            return
     
     # 顯示字幕內容
     for item in srt:
