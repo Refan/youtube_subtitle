@@ -1,14 +1,14 @@
 請輸入YouTube 影片 ID：<br>
 https://www.youtube.com/watch?v=dQw4w9WgXcQ<br>
 <form method="POST" action="" enctype="multipart/form-data">
-    <input type="text" name="videoId" value=""><br>
-    <input type="text" name="videoUrl" placeholder="請輸入完整的 YouTube 影片連結"><br>
+    <!-- <input style="width:400;" type="text" name="videoId" placeholder="請輸入YouTube 影片ID"><br> -->
+    <input style="width:400;" type="text" name="videoUrl" placeholder="請輸入完整的 YouTube 影片連結"><br>
     <button type="submit">送出</button>
 </form>
 
 <?php
 date_default_timezone_set("Asia/Taipei");
-if (!empty($_POST['videoId']) || !empty($_POST['videoId']) ){
+if (!empty($_POST['videoId']) || !empty($_POST['videoUrl']) ){
     // 使用完整的 Python 路徑
     $pythonPath = '/Users/xxx/opt/anaconda3/bin/python'; // 替換成你的 Python 路徑
     $pythonScript = '/Users/xxx/Projects/localhost/youtube_subtitle/subtitle.py'; // 替換成你的腳本路徑
@@ -28,7 +28,7 @@ if (!empty($_POST['videoId']) || !empty($_POST['videoId']) ){
 
     // 檢查是否成功執行
     if ($returnVar === 0) {
-        echo '<textarea cols="60" rows="0">';
+        echo '<textarea cols="60" rows="30">';
         foreach ($output as $line) {
             echo htmlspecialchars($line) . PHP_EOL;
         }
