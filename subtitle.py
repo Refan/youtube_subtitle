@@ -17,7 +17,7 @@ def display_transcript(video_id):
         return
     
     try:
-        srt = YouTubeTranscriptApi.get_transcript(key, languages=['zh-TW'])
+        srt = YouTubeTranscriptApi.get_transcript(key, languages=['zh-Hant'])
     except Exception as e:
         print("獲取字幕失敗：", e)
         print("請確認影片是否有字幕或語言設定是否正確。")
